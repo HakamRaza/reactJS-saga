@@ -1,5 +1,9 @@
 import React from 'react';
 
+//to dispatch the action from VIEW
+import {connect} from 'react-redux';
+import Actions from "../../actions";
+
 
 class Register extends React.Component{
     constructor(props){
@@ -23,6 +27,8 @@ class Register extends React.Component{
             password,
             password_confirmation,
         };
+
+        this.props.onRegister();
     }
 
 
@@ -33,33 +39,42 @@ class Register extends React.Component{
                 <h1>This is Register Page</h1>
     
                 //input form
-                <input type="text" placeholder="name" onChange={()=> this.setState({
+                <input type="text" placeholder="name" onChange={(name)=> this.setState({
                     name:name.target.value
                 })}
                 />
     
-                <input type="text" placeholder="email" onChange={()=> this.setState({
+                <input type="text" placeholder="email" onChange={(email)=> this.setState({
                     email:email.target.value
                 })}
                 />
     
     
-                <input type="text" placeholder="password" onChange={()=> this.setState({
+                <input type="text" placeholder="password" onChange={(password)=> this.setState({
                     password:password.target.value
                 })}
                 />
     
-                <input type="text" placeholder="password_confirmation" onChange={()=> this.setState({
+                <input type="text" placeholder="password_confirmation" onChange={(password_confirmation)=> this.setState({
                     password_confirmation:password_confirmation.target.value
                 })}
                 />
     
-                <button onPress={()=> this.onSubmitPressed()}>Submit</button>
+                <button onClick={()=> this.onSubmitPressed()}>Submit</button>
 
             </div>
         );
     }
 }
 
+//get the data from api
+const mapStateToPtop = (store) => ({});
 
-export default Register;
+//dispatch action as props
+const mapDispatchToProp = {
+    onRegister: Actions.register,
+};
+
+// export default Register;
+
+export default connect(mapStateToPtop, mapDispatchToProp)(Register);

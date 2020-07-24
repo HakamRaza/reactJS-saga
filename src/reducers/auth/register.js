@@ -3,7 +3,7 @@ import Actions from "../../actions";
 
 //to set inital state, to cheack when funtion below are executed
 const getDefaultState = () => ({
-    isLoading = false,
+    isLoading: false,
     error:null,
     data:{},
 })

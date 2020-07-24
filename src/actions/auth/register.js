@@ -19,7 +19,7 @@ export const registerSuccess = data => ({
     data: data,
 })
 
-export const registerFail = data => ({
+export const registerFail = error => ({
     type: REGISTER_FAIL,
     error: error,
 })
