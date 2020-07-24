@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 60px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+
+}
+
+.header-list {
+    list-style-type: none;
+    float: right;
+}
+
+.header-list li {
+    display: inline-block;
+    padding: 10px;
+}

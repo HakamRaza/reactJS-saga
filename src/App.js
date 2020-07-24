@@ -6,14 +6,30 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/lib/integration/react";
 
 import Login from "./containers/auth/Login";
+import Register from "./containers/auth/register";
+import Header from "components/header";
 
 import { store, persistor } from "./store/index";
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <Provider store={store}>
+      {/* keeping something, persist */}
       <PersistGate persistor={persistor}>
-        <Login />
+
+        
+
+        <Router>
+          <Header />
+
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/" component={Login} />
+          </Switch>
+        </Router>
+
       </PersistGate>
     </Provider>
   );

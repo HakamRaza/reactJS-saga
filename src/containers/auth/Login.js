@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Actions from "../../actions";
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -15,13 +16,24 @@ class Login extends Component {
   }
 
   onSubmitPressed() {
+    //object
+    // const data = {
+    //   //get from input above
+    //   email: this.state.emailInput,
+    //   password: this.state.passwordInput
+    // };
+
+
+    // destructuring above
+    const {emailInput, passwordInput} = this.state;
     const data = {
-      email: this.state.emailInput,
-      password: this.state.passwordInput
+      email: emailInput,
+      password: passwordInput,
     };
 
     this.props.onLogin(data);
   }
+
   render() {
     console.log("DATA", this.props.getLoginData);
     return (
@@ -30,9 +42,17 @@ class Login extends Component {
         <input
           type="text"
           placeholder="email"
+          trigger function every time it change
           onChange={email => {
+            //update at state
             this.setState({ emailInput: email.target.value });
           }}
+
+          // check what is type
+          // onChange={(email) => {
+          //   console.log(email.target.value);
+          // }}
+
         />
         <input
           type="text"
@@ -42,7 +62,10 @@ class Login extends Component {
           }}
         />
 
-        <button onClick={this.onSubmitPressed}>Login</button>
+        {/* <button onClick={this.onSubmitPressed}>Login</button> */}
+        {/* same as */}
+        <button onClick={() => this.onSubmitPressed()}>Login</button>
+
       </div>
     );
   }
@@ -51,6 +74,8 @@ class Login extends Component {
 const mapStateToProps = store => ({
   getLoginData: Actions.getLoginData(store)
 });
+
+
 const mapDispatchToProps = {
   onLogin: Actions.login
 };
