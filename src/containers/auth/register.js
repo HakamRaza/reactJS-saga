@@ -28,7 +28,7 @@ class Register extends React.Component{
             password_confirmation,
         };
 
-        this.props.onRegister();
+        this.props.onRegister(data);
     }
 
 
@@ -38,7 +38,7 @@ class Register extends React.Component{
 
                 <h1>This is Register Page</h1>
     
-                //input form
+                {/* //input form */}
                 <input type="text" placeholder="name" onChange={(name)=> this.setState({
                     name:name.target.value
                 })}

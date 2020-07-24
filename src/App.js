@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/lib/integration/react";
 
 import Login from "./containers/auth/Login";
-import Register from "./containers/auth/register";
+import Register from "./containers/auth/Register";
 import Header from "components/header";
 
 import { store, persistor } from "./store/index";

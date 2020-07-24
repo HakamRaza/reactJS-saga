@@ -14,7 +14,8 @@ export const getHeader = () => {
 const getFullUrl = endpoint => {
   // return "http://api.orionex.cc/" + endpoint;
   // where you put end point
-  return "localhost:8000" + endpoint;
+  // return "localhost:8000/" + endpoint;
+  return "http://localhost:8000/" + endpoint;
 };
 
 

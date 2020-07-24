@@ -50,11 +50,25 @@
 import { takeLatest, call, all, fork, put } from "redux-saga/effects";
 import Actions from "../../actions";
 import * as api from "../../api";
+// import { register } from "../../actions/auth/register";
 
-import { encode } from "../../services/encryption";
+// import { encode } from "../../services/encryption";
 
 function* register({ data }) {
-  console.log("register saga");
+  // console.log("register saga");
+  console.log(data);
+  const formData = new FormData();
+  
+  formData.append('name', data.name);
+  formData.append('email', data.email);
+  formData.append('password', data.password);
+  formData.append('password_confirmation', data.password_confirmation);
+
+  // console.log(formData)
+
+  const {response, error} = yield call(api.register, formData);
+  // console.log(response, error);
+
 }
 
 function* watchRegister() {
