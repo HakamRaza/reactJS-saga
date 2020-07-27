@@ -138,27 +138,42 @@ class Register extends React.Component{
 
                     <label>Name:</label>
                     <br/>
-                    <input type="text" placeholder="name" title="Name must be more than 2 chars" placeholder="Username" onChange={(name)=> this.setState({
+                    <input type="text"
+                    title="Name must be more than 4 chars"
+                    pattern=".{4,}" 
+                    placeholder="Username" onChange={(name)=> this.setState({
                         name:name.target.value
                     })}
                     />
 
                     <label>Email:</label>
                     <br/>
-                    <input type="text" placeholder="email" title="user@domain.com" placeholder="something@domain.com" onChange={(email)=> this.setState({
+                    <input type="text" 
+                    title="Email in user@domain.com format" 
+                    placeholder="something@domain.com" 
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                    onChange={(email)=> this.setState({
                         email:email.target.value
                     })}
                     />
         
                     <label>Password:</label>
                     <br/>
-                    <input type="text" placeholder="password" title="Password must be more than 6 chars" placeholder="Password" onChange={(password)=> this.setState({
+                    <input type="text" 
+                    title="Password must be more than 6 chars"
+                    pattern=".{6,}" 
+                    placeholder="Password" 
+                    onChange={(password)=> this.setState({
                         password:password.target.value
                     })}
                     />
                     <label>Retype Password:</label>
                     <br/>
-                    <input type="password" placeholder="password_confirmation" title="Password must be more than 6 chars" placeholder="Confirm Password" onChange={(password_confirmation)=> this.setState({
+                    <input type="password" 
+                    title="Password must be same as above"
+                    pattern=".{6,}" 
+                    placeholder="Confirm Password" 
+                    onChange={(password_confirmation)=> this.setState({
                         password_confirmation:password_confirmation.target.value
                     })}
                     />

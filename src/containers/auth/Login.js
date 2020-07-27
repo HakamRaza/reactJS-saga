@@ -48,7 +48,9 @@ class Login extends Component {
           <br/>
           <input
             type="text"
-            placeholder="email"
+            placeholder="Email"
+            title = "Email in something@domain.com format"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
             trigger function every time it change
             onChange={email => {
               //update at state
@@ -66,7 +68,9 @@ class Login extends Component {
           <br/>
           <input
             type="text"
-            placeholder="password"
+            placeholder="Password"
+            pattern=".{6,}" 
+            title="Six or more characters"
             onChange={password => {
               this.setState({ passwordInput: password.target.value });
             }}
