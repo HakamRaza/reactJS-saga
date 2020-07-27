@@ -8,23 +8,23 @@ function* login({ data }) {
   formData.append("email", data.email);
   formData.append("password", data.password);
 
-  const { response } = yield call(api.login, formData);
+  const { response, error } = yield call(api.login, formData);
 
-  if (response && response.data.code === 1) {
-    // const loginInfo = {
-    //   timestamp: new Date().valueOf(),
-    //   userId: response.data.data.userId,
-    //   token: response.data.data.xToken
-    // };
+  if (response && response.data.status === "success"){
 
-    yield put(Actions.loginSuccess(response.data.data));
-    // yield put(
-    //   Actions.activateUserSession({ xToken: encode(JSON.stringify(loginInfo)) })
-    // );
-  } else {
-    yield put(Actions.loginFail(response.data.message));
+    console.log(response);
+    yield put(Actions.loginSuccess(response.data));
+
+    //store the token inside store
+    const token = response.data.token;
+    yield put(Actions.activateUserSession(token));
+  }
+
+  if (error){
+    yield put(Actions.loginFail(error));
   }
 }
+
 
 function* watchLogin() {
   yield takeLatest(Actions.LOGIN, login);

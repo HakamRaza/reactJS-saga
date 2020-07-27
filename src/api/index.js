@@ -9,3 +9,8 @@ export const register = data => {
   //type of http verb, route of api (endpoint), data is the data pass from 
   return fetchApi("post", "api/auth/register", data);
 };
+
+export const getAll = (headers) => {
+  return fetchApi("get", "api/all", null, headers);
+};
+

@@ -27,9 +27,26 @@ function* register({ data }) {
 
 
   //pass to api
+  //destructuring
   const {response, error} = yield call(api.register, formData);
   // formData will pass to index/api/index.js as data
   
+
+
+  //if response status success, then we will update the reducer
+  //if we got response, and response status === success message
+  // make sure the status is really same spelling!
+
+  if(response && response.data.status === "success"){
+    yield put(Actions.registerSuccess(response.data));
+  }
+
+  if(error){
+    console.log(error);
+    yield put(Actions.registerFail(error));
+  }
+  
+  //if error, then update fail reducer
 
 }
 
@@ -39,6 +56,7 @@ function* watchRegister() {
 }
 
 // export and execute 2 function together using fork
+// fork is calling function like call, fetch but different fx, you can call next function same time as the first complete, it run simultaneously with single call.
 export default function* submit() {
   yield all([fork(watchRegister)]);
 }

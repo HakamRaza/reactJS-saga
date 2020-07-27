@@ -54,3 +54,11 @@ button:hover {
     background-color: #6ebfb5;
     color: #394989;
 }
+
+.popBox {
+    width: 200px;
+    height: 200px;
+    background-color: tomato;
+    text-align: center;
+    
+}

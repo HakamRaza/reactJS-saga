@@ -8,6 +8,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import Login from "./containers/auth/Login";
 import Register from "./containers/auth/Register";
 import Header from "components/header";
+import Dashboard from "containers/dashboard/Dashboard";
 
 import { store, persistor } from "./store/index";
 import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/" component={Login} />
           </Switch>
         </Router>
