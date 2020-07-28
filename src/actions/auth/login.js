@@ -7,6 +7,7 @@ export const RESET_LOGIN = `${NAME}/RESET_LOGIN`;
 
 export const getLoginData = store => store[NAME].login;
 
+// action name
 export const login = data => ({
   type: LOGIN,
   data

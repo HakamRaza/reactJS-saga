@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Actions from "../../actions";
 import "./public.css";
 import {Link} from 'react-router-dom';
+import { getRegisterData } from "../../actions/auth/register";
 
 class Login extends Component {
   constructor(props) {
@@ -14,6 +15,32 @@ class Login extends Component {
     };
 
     this.onSubmitPressed = this.onSubmitPressed.bind(this);
+  }
+
+  //2. check whether there update (auto)
+  componentDidUpdate(prevProps){
+    
+    const { getLoginData } = this.props;
+    
+    //3. check action status
+      //true                                //false
+    if(prevProps.getLoginData.isLoading && !getRegisterData.isLoading){
+      
+      //4. check status response is success
+      if(getLoginData.data.status === "success") {
+                
+        // alert("Login Success");
+        //redirect to dashboard page if success
+        this.props.history.push("/dashboard");
+        
+        //5. if there no response success and error is not null
+      } else if (getRegisterData.error !== null){
+        
+        alert("Fail, please try again");
+        //redirect to login page
+        this.props.history.push("/login");
+      }
+    }
   }
 
   onSubmitPressed() {
@@ -89,6 +116,8 @@ class Login extends Component {
   }
 }
 
+
+//1. get update data from saga, pass after called the api assign to getLoginData props 
 const mapStateToProps = store => ({
   getLoginData: Actions.getLoginData(store)
 });
