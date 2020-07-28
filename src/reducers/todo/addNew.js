@@ -9,7 +9,7 @@ const getDefaultState = () => ({
 })
 
 //create pure function
-function getAll(state, action){
+function addNew(state, action){
 
     // reset state to initial default state
     if (typeof state === "undefined"){
@@ -21,7 +21,7 @@ function getAll(state, action){
     //using switch case
 
     switch (action.type) {
-        case Actions.GET_ALL:
+        case Actions.ADD_NEW:
             return {
                 // is it loading?, to check state current is done or not
                 isLoading: true,
@@ -33,14 +33,14 @@ function getAll(state, action){
 
         // break; using return already break the case
     
-        case Actions.GET_ALL_SUCESS:
+        case Actions.ADD_NEW_SUCESS:
             return {
                 isLoading: false,
                 error: null,
                 data: action.data,
             };
         
-        case Actions.GET_ALL_FAIL:
+        case Actions.ADD_NEW_FAIL:
             return {
                 isLoading: false,
                 error: action.error,
@@ -49,7 +49,8 @@ function getAll(state, action){
 
         default:
             return state;
+        break;
     }
 }
 
-export default getAll;
+export default addNew;

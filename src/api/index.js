@@ -14,3 +14,6 @@ export const getAll = (headers) => {
   return fetchApi("get", "api/all", null, headers);
 };
 
+export const addNew = (data, headers) => {
+  return fetchApi("post", "api/new", data, headers);
+};

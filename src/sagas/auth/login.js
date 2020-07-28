@@ -6,7 +6,7 @@ import { Redirect } from "react-router";
 
 function* login({ data }) {
   //data is from view
-  console.log(data);
+  // console.log(data);
 
   //1. creating object action
   const formData = new FormData();
@@ -17,13 +17,13 @@ function* login({ data }) {
   const { response, error } = yield call(api.login, formData);
   
   //debug to know reponse, error
-  console.log("login saga", response,error);
+  // console.log("login saga", response,error);
 
   //3. check if there a response have and response.data.status reply is success
 
   if (response && response.data.status === "success"){
 
-    console.log(response);
+    // console.log(response);
 
     //4. when we got response, we pass in the data to frontend
     yield put(Actions.loginSuccess(response.data));

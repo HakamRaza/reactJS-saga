@@ -17,13 +17,15 @@ function* getAll() {
     console.log("the token is:", token);
 
     const headers = {Authorization:`Bearer ${token}`};
-    
     const {response, error} = yield call (api.getAll, headers);
+    
+    // console.log(response,error);
 
+    if(response && response.data.status ==="success"){
+      yield put(Actions.getAllSuccess(response.data));
+    }
 
-    console.log(response,error);
-
-  if (error){
+   if (error){
     yield put(Actions.getAllFail(error));
   }
 }

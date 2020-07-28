@@ -36,7 +36,7 @@ class Login extends Component {
         //5. if there no response success and error is not null
       } else if (getRegisterData.error !== null){
         
-        alert("Fail, please try again");
+        alert("Failed Please Try Again");
         //redirect to login page
         this.props.history.push("/login");
       }

@@ -42,7 +42,7 @@ function* register({ data }) {
   }
 
   if(error){
-    console.log(error);
+    // console.log("this is register error", error);
     yield put(Actions.registerFail(error));
   }
   
