@@ -26,8 +26,8 @@ class Dashboard extends React.Component {
         //check loading
         if(prevProps.getAllData.isLoading && !getAllData.isLoading){
             if(getAllData.data.status === 'success'){
-                
-                console.log("dashboard did update", getAllData);
+
+                // console.log("dashboard did update", getAllData);
                 this.setState({taskList: getAllData.data.all});
             }
         }
@@ -54,59 +54,48 @@ class Dashboard extends React.Component {
     }
 
     render(){
+        console.log("DATA",this.state);
         return(
-            <div className="container">
+            <div>
                 <h1>This is Dashboard</h1>
-                <button onClick = {()=> this.popAddTask()}>Add Task</button>
 
-                {
-                    this.state.popAddTask && (
+                <button className="dash-add" onClick = {()=> this.popAddTask()}>Add Task</button>
+                
+                    
+                {this.state.popAddTask && (
+                    <div className = "dash-card">
+                        {/* need to use same name For and id for react */}
+                        <label htmlFor="title">Title :</label>
+                        <input type = "text" placeholder ="Task Title" id="title" onChange={(title)=> this.setState({title: title.target.value})}></input>
+                        
+                        <label htmlFor="description">Description :</label>
+                        <input type = "text" placeholder ="Description of Task" id="description" onChange = {(description) => this.setState({description: description.target.value})}></input>
 
-                        <div className = "card">
-
-                            {/* need to use same name For and id for react */}
-                            <label htmlFor="title">Title</label>
-                            <input type = "text" 
-                            placeholder ="Task Title" 
-                            id="title"
-                            onChange={(title)=> this.setState({
-                                title: title.target.value
-                            })}
-                            ></input>
-
-
-                            <label htmlFor="description">Description</label>
-                            <input type = "textbox"
-                            placeholder ="Description of Task" 
-                            id="description"
-                            onChange = {(description)=> this.setState({
-                                description: description.target.value,
-                            })}
-                            ></input>
-
-                            <label htmlFor="status">Status</label>
-                            <input type = "text"
-                            placeholder ="Set Status"
-                            id="status"
-                            onChange = {(status)=> this.setState({
-                                status:status.target.value,
-                            })}
-                            ></input>
-
-                            <button onClick={()=>this._onSubmitButtonPressed()} >Submit</button>
+                        <label htmlFor="status">Status :</label>
+                        <div className="dash-radio">
+                            <input type="radio" id="Pending" name="status" value="Pending" onChange = {(status)=> this.setState({status:status.target.value})} checked></input>
+                            <label htmlFor="Pending">Pending</label>
+                            <input type="radio" id="On-Going" name="status" value="On-Going" onChange = {(status)=> this.setState({status:status.target.value})}></input>
+                            <label htmlFor="On-Going">On-Going</label>
+                            <input type="radio" id="Completed" name="status" value="Completed" onChange = {(status)=> this.setState({status:status.target.value})}></input>
+                            <label htmlFor="Completed">Completed</label>
                         </div>
-
-                    )
-                }
-
-                {this.state.taskList.map((list) => (
-                    <div>
-                        <h4>{list.list_title}</h4>
-                        <p>{list.list_desc}</p>
-                        <p>Status: {list.list_status}</p>
+                        
+                        <button className="add-submit" onClick={()=>this._onSubmitButtonPressed()} >Submit</button>
                     </div>
-                    // create component <taskList / title = {list.list_title} desc = {list.list_desc}>
-                ))}
+                )}               
+                
+                <div >
+
+                    {this.state.taskList.map((list) => (
+                        <div>
+                            <h4>{list.list_title}</h4>
+                            <p>{list.list_desc}</p>
+                            <p>Status: {list.list_status}</p>
+                        </div>
+                        // create component <taskList / title = {list.list_title} desc = {list.list_desc}>
+                    ))}
+                </div>
             </div>
         );
     }

@@ -4,55 +4,75 @@
     box-sizing: border-box;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
 
-    display: grid;
-    justify-content: center;
-    align-items: center;
-
-    padding: 1em;
-    text-align: center;
+.dash-add {
+    position: fixed;
+    top: 5em;
+    right: 2em;
 }
 
-.card {
-    width: 250px;
+
+.dash-card {
+    width: 300px;
     height: auto;
     border: 1px solid #93b5e1;
-    border-radius: 10%;
-    box-shadow: 10px 10px 0px #93b5e1;
-    text-align: center;
-    padding: 2em;
+    box-shadow: 5px 5px 0px #93b5e1a1;
+    padding: 1em;
+
+    display: grid;
+    align-items: center;
 
     font-family: sans-serif;
-    margin: 40px;
     text-align: left;
     font-size: 0.9em;
     line-height: 30px;
+
+    position: fixed;
+    top: 10em;
+    right: 4em;
+
+    /* position: relative; */
+
 }
 
-input {
-    width: 95%;
+#title, #description {
+    width: 100%;
     height: 2em;
     padding: 0.5em;
     border: 1px solid #93b5e1;
-    
 }
 
 
-button {
+.add-submit {
+    /* width: 100%; */
     margin: 10px 0;
-    width: 5em;
     height: 3em;
     border-radius: 10%;
     background-color: #0f4c75;
     color: whitesmoke;
+
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+
 }
 
-button:hover {
+.dash-card button:hover {
     cursor: pointer;
     background-color: whitesmoke;
     color: #394989;
     border: 1px solid #394989;
+}
+
+.dash-radio {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.dash-radio input {
+    width: 5px;
+    height: auto;
+    margin: 0 1em;
 }

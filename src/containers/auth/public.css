@@ -51,8 +51,10 @@ button {
 }
 
 button:hover {
-    background-color: #6ebfb5;
+    cursor: pointer;
+    background-color: whitesmoke;
     color: #394989;
+    border: 1px solid #394989;
 }
 
 .popBox {
