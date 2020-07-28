@@ -4,19 +4,26 @@
     box-sizing: border-box;
 }
 
+/* .dash {
+    background-color: #93b5e1;
+} */
+
 
 .dash-add {
     position: fixed;
     top: 5em;
     right: 2em;
+
+    z-index: 100;
 }
 
 
 .dash-card {
     width: 300px;
     height: auto;
-    border: 1px solid #93b5e1;
-    box-shadow: 5px 5px 0px #93b5e1a1;
+    border: 1px solid #394989;
+    box-shadow: 5px 5px 0px #39498998;
+    background-color: rgba(245, 245, 245, 0.7);
     padding: 1em;
 
     display: grid;
@@ -30,9 +37,8 @@
     position: fixed;
     top: 10em;
     right: 4em;
-
-    /* position: relative; */
-
+    
+    z-index: 100;
 }
 
 #title, #description {
@@ -44,7 +50,6 @@
 
 
 .add-submit {
-    /* width: 100%; */
     margin: 10px 0;
     height: 3em;
     border-radius: 10%;
@@ -54,7 +59,6 @@
     position: absolute;
     bottom: 1em;
     right: 1em;
-
 }
 
 .dash-card button:hover {
@@ -67,12 +71,23 @@
 .dash-radio {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
 .dash-radio input {
     width: 5px;
     height: auto;
     margin: 0 1em;
+}
+
+.tl-container {
+    width: 100%;
+    height: auto;
+
+    padding: 1em;
+
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+    justify-content: center;
+
 }

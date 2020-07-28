@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Actions from 'actions';
 import "./dashboard.css";
+import Tasklist from "components/TaskList";
 
 class Dashboard extends React.Component {
 
@@ -27,7 +28,7 @@ class Dashboard extends React.Component {
         if(prevProps.getAllData.isLoading && !getAllData.isLoading){
             if(getAllData.data.status === 'success'){
 
-                // console.log("dashboard did update", getAllData);
+                console.log("dashboard did update", getAllData);
                 this.setState({taskList: getAllData.data.all});
             }
         }
@@ -85,16 +86,30 @@ class Dashboard extends React.Component {
                     </div>
                 )}               
                 
-                <div >
+                <div className = "tl-container">
 
-                    {this.state.taskList.map((list) => (
+                    {/* {this.state.taskList.map((list) => (
                         <div>
                             <h4>{list.list_title}</h4>
                             <p>{list.list_desc}</p>
                             <p>Status: {list.list_status}</p>
                         </div>
-                        // create component <taskList / title = {list.list_title} desc = {list.list_desc}>
+                    ))} */}
+
+
+                    {/* create component <taskList / title = {list.list_title} desc = {list.list_desc}> */}
+                    
+                    {this.state.taskList.map((list) => (
+                         
+                        <Tasklist 
+                        title = {list.list_title}
+                        desc = {list.list_desc}
+                        status = {list.list_status}
+                        // data = {this.state.taskList}
+                        // status="Pending"
+                        />
                     ))}
+                    
                 </div>
             </div>
         );
