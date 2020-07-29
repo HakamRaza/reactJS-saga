@@ -4,6 +4,8 @@ import Actions from 'actions';
 import "./dashboard.css";
 import Tasklist from "components/TaskList";
 
+import { Link } from 'react-router-dom';
+
 class Dashboard extends React.Component {
 
     constructor(props){
@@ -57,6 +59,7 @@ class Dashboard extends React.Component {
     render(){
         console.log("DATA",this.state);
         return(
+            // <div style={{textAlign: "center"}}>
             <div>
                 <h1>This is Dashboard</h1>
 
@@ -100,14 +103,20 @@ class Dashboard extends React.Component {
                     {/* create component <taskList / title = {list.list_title} desc = {list.list_desc}> */}
                     
                     {this.state.taskList.map((list) => (
-                         
-                        <Tasklist 
-                        title = {list.list_title}
-                        desc = {list.list_desc}
-                        status = {list.list_status}
-                        // data = {this.state.taskList}
-                        // status="Pending"
-                        />
+                        <Link 
+                        // key = {{$list_id}}
+                        to = {{
+                            pathname: `/dashboard/${list.id}`,
+                            taskProps: list,
+                            }}
+                        >
+                        
+                            <Tasklist 
+                            title = {list.list_title}
+                            desc = {list.list_desc}
+                            status = {list.list_status}
+                            />
+                        </Link>
                     ))}
                     
                 </div>

@@ -17,3 +17,12 @@ export const getAll = (headers) => {
 export const addNew = (data, headers) => {
   return fetchApi("post", "api/new", data, headers);
 };
+
+export const delList = (data, headers) => {
+  return fetchApi("post", "api/delete", data, headers);
+};
+
+// if using get from address @delete method
+// export const delList = (headers) => {
+//   return fetchApi("delete", `api/${delete.id}`, null, headers);
+// };

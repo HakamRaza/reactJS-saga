@@ -8,7 +8,7 @@ export const ADD_NEW_SUCESS = `${NAME}/ADD_NEW_SUCESS`;
 export const ADD_NEW_FAIL = `${NAME}/ADD_NEW_FAIL`;
 
 //to pass data to containers, arrow funtion, get from register export
-export const getAddNewData = (store) => store[NAME].getAll;
+export const getAddNewData = (store) => store[NAME].addNew;
 
 
 //create action function, step 3

@@ -12,6 +12,7 @@ import Dashboard from "containers/dashboard/Dashboard";
 
 import { store, persistor } from "./store/index";
 import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import TaskDetail from "./containers/taskdetails";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard/:id" component={TaskDetail} />
             <Route path="/" component={Login} />
           </Switch>
         </Router>

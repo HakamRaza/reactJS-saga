@@ -8,6 +8,20 @@
     /* box-shadow: 10px 10px; */
 
     position: relative;
+
+    animation: slideIn 1s;
+}
+
+@keyframes slideIn {
+    from{ 
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    to{ 
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 h4 {

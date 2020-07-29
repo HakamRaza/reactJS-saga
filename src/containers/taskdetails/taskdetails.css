@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.breadcrumbs {
+    display: inline-block;
+    line-height: 20px;
+}
+
+
+.details-center {
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-card {
+    width: 100%;
+    height: auto;
+    background-color: lightblue;
+    padding: 1em;
+}
