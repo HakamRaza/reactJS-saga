@@ -14,7 +14,7 @@ function* getAll() {
     let token = store.getState().PROFILE.userSession.data;
     // let token = Actions.activateUserSession(store).data;
 
-    console.log("the token is:", token);
+    // console.log("the token is:", token);
 
     const headers = {Authorization:`Bearer ${token}`};
     const {response, error} = yield call (api.getAll, headers);

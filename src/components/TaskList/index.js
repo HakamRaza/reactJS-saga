@@ -46,7 +46,7 @@ class Tasklist extends React.Component {
     }
 
     render(){
-        console.log(this.props);
+        // console.log(this.props);
 
         return(
             <div className="tl-card" style={{boxShadow:`10px 10px ${this.state.color}`}}>
@@ -58,8 +58,8 @@ class Tasklist extends React.Component {
                 </div>
 
                 <div className="button">
-                    <button >Edit</button>
-                    <button className="tl-button">Delete</button>
+                    {/* <button >Edit</button>
+                    <button className="tl-button">Delete</button> */}
                 </div>
             </div>
         );

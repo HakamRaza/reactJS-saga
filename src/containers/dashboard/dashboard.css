@@ -23,7 +23,7 @@
     height: auto;
     border: 1px solid #394989;
     box-shadow: 5px 5px 0px #39498998;
-    background-color: rgba(245, 245, 245, 0.7);
+    background-color: rgba(245, 245, 245, 0.9);
     padding: 1em;
 
     display: grid;
@@ -57,7 +57,7 @@
     color: whitesmoke;
 
     position: absolute;
-    bottom: 1em;
+    bottom: 0.5em;
     right: 1em;
 }
 
@@ -68,7 +68,7 @@
     border: 1px solid #394989;
 }
 
-.dash-radio {
+/* .dash-radio {
     display: grid;
     grid-template-columns: 1fr 5fr;
 }
@@ -77,7 +77,7 @@
     width: 5px;
     height: auto;
     margin: 0 1em;
-}
+} */
 
 .tl-container {
     width: 100%;
@@ -90,4 +90,11 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
     justify-content: center;
 
+}
+
+.option {
+    width: 60%;
+    height: 2em;
+    /* padding: 0.5em; */
+    border: 1px solid #93b5e1;
 }

@@ -16,10 +16,14 @@ class Dashboard extends React.Component {
             popAddTask : false,
             //to output the data, initial value
             taskList: [],
+            status:"Pending",
+            // title: "",
+            // description: "",
         }
     }
 
     componentDidMount(){
+        console.log("Get All Executed")
         this.props.onGetAll();
     }
 
@@ -30,7 +34,7 @@ class Dashboard extends React.Component {
         if(prevProps.getAllData.isLoading && !getAllData.isLoading){
             if(getAllData.data.status === 'success'){
 
-                console.log("dashboard did update", getAllData);
+                // console.log("dashboard did update", getAllData);
                 this.setState({taskList: getAllData.data.all});
             }
         }
@@ -54,10 +58,11 @@ class Dashboard extends React.Component {
         }
 
         this.props.onAddNew(data);
+        // console.log(data);
     }
 
     render(){
-        console.log("DATA",this.state);
+        // console.log("DATA",this.state);
         return(
             // <div style={{textAlign: "center"}}>
             <div>
@@ -69,22 +74,22 @@ class Dashboard extends React.Component {
                 {this.state.popAddTask && (
                     <div className = "dash-card">
                         {/* need to use same name For and id for react */}
-                        <label htmlFor="title">Title :</label>
-                        <input type = "text" placeholder ="Task Title" id="title" onChange={(title)=> this.setState({title: title.target.value})}></input>
-                        
-                        <label htmlFor="description">Description :</label>
-                        <input type = "text" placeholder ="Description of Task" id="description" onChange = {(description) => this.setState({description: description.target.value})}></input>
+                        <div>
+                            <label htmlFor="title">Title :</label>
+                            <input type = "text" placeholder ="Task Title" id="title" onChange={(title)=> this.setState({title: title.target.value})}></input>
+                            
+                            <label htmlFor="description">Description :</label>
+                            <input type = "text" placeholder ="Description of Task" id="description" onChange = {(description) => this.setState({description: description.target.value})}></input>
 
-                        <label htmlFor="status">Status :</label>
-                        <div className="dash-radio">
-                            <input type="radio" id="Pending" name="status" value="Pending" onChange = {(status)=> this.setState({status:status.target.value})} checked></input>
-                            <label htmlFor="Pending">Pending</label>
-                            <input type="radio" id="On-Going" name="status" value="On-Going" onChange = {(status)=> this.setState({status:status.target.value})}></input>
-                            <label htmlFor="On-Going">On-Going</label>
-                            <input type="radio" id="Completed" name="status" value="Completed" onChange = {(status)=> this.setState({status:status.target.value})}></input>
-                            <label htmlFor="Completed">Completed</label>
+                            <label htmlFor="status">Status :</label>
+                            <div>
+                                <select className ="option" name="status" id="status" onChange = {(status)=> this.setState({status:status.target.value})}>
+                                    <option value="Pending" >Pending</option>
+                                    <option value="On-Going">On-Going</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
                         </div>
-                        
                         <button className="add-submit" onClick={()=>this._onSubmitButtonPressed()} >Submit</button>
                     </div>
                 )}               
@@ -104,14 +109,15 @@ class Dashboard extends React.Component {
                     
                     {this.state.taskList.map((list) => (
                         <Link 
-                        // key = {{$list_id}}
                         to = {{
+                            // key = {list.list.id}
                             pathname: `/dashboard/${list.id}`,
                             taskProps: list,
-                            }}
+                        }}
                         >
                         
                             <Tasklist 
+
                             title = {list.list_title}
                             desc = {list.list_desc}
                             status = {list.list_status}

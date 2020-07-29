@@ -18,7 +18,7 @@ function* addNew({data}) {
     formData.append('status', data.status);
     
     const {response, error} = yield call (api.addNew, formData, headers);
-    console.log(response,error);
+    // console.log(response,error);
 
     //call both function to get real time view
     if(response && response.data.status === 'success'){
