@@ -6,6 +6,10 @@ import "./public.css";
 import {Link} from 'react-router-dom';
 import { getRegisterData } from "../../actions/auth/register";
 
+// using strap react
+import { Button } from 'reactstrap';
+
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -106,7 +110,8 @@ class Login extends Component {
           {/* <button onClick={this.onSubmitPressed}>Login</button> */}
           {/* same as */}
 
-          <button onClick={() => this.onSubmitPressed()}>Login</button>
+          {/* <button onClick={() => this.onSubmitPressed()}>Login</button> */}
+          <Button color="danger" onClick={() => this.onSubmitPressed()}>Login</Button>
 
           <Link to={"/register"}><p>Register Here</p></Link>
 

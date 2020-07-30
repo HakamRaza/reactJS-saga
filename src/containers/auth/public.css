@@ -44,11 +44,13 @@ input {
 button {
     margin: 10px 0;
     width: 5em;
-    height: 3em;
-    border-radius: 10%;
+    /* height: 3em; */
+    /* border-radius: 10%;
     background-color: #0f4c75;
-    color: whitesmoke;
+    color: whitesmoke; */
 }
+
+
 
 button:hover {
     cursor: pointer;
