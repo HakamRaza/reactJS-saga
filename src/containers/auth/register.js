@@ -6,6 +6,10 @@ import Actions from "../../actions";
 import { Link } from 'react-router-dom';
 import { getRegisterData } from '../../actions/auth/register';
 
+// using strap react
+// import { Button } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 class Register extends React.Component{
     constructor(props){
         super(props);
@@ -18,6 +22,7 @@ class Register extends React.Component{
 
             //state for popBox
             showPop: false,
+            statusTitle:"",
             statusMessage:"",
             buttonText:"",
 
@@ -51,8 +56,9 @@ class Register extends React.Component{
                 //update state popBox state if success
                 this.setState({
                     showPop:true,
-                    statusMessage: "Success",
-                    buttonText: "Go Login",
+                    statusTitle: "Success",
+                    statusMessage: "Thank You, you will be redirected to Login Page",
+                    buttonText: "Nice",
                 });
                 
                 // alert("Success");
@@ -66,8 +72,9 @@ class Register extends React.Component{
                  //update state popBox state if fail
                  this.setState({
                     showPop:true,
-                    statusMessage: "Failed",
-                    buttonText: "Try Again",
+                    statusTitle: "Failed",
+                    statusMessage: "Make sure to fill up all the form properly dammit!",
+                    buttonText: "OK",
                 });
                 
 
@@ -98,16 +105,27 @@ class Register extends React.Component{
     onSubmitPressed() {
         //destructuring, you can arrange random, make sure the same keyname
         const {name, email, password, password_confirmation} = this.state;
+        
+        if(name != null && email!= null && password!= null && password_confirmation!= null){
+            
+            const data = {
+                // name:name,
+                name,
+                email,
+                password,
+                password_confirmation,
+            };
+            //pass data to sagas/auth/register.js
+            this.props.onRegister(data);
 
-        const data = {
-            // name:name,
-            name,
-            email,
-            password,
-            password_confirmation,
-        };
-        //pass data to sagas/auth/register.js
-        this.props.onRegister(data);
+        } else {
+            this.setState({
+                showPop:true,
+                statusTitle: "Failed",
+                statusMessage: "Make sure to fill up all the form properly dammit!",
+                buttonText: "OK",
+            })
+        }
     }
 
 
@@ -115,7 +133,7 @@ class Register extends React.Component{
         return(
             <div className="container">
 
-                {
+                {/* {
                     // this is JS
                     // only show based on state of showPop, if true, show
                     this.state.showPop && (
@@ -125,10 +143,17 @@ class Register extends React.Component{
                             <h1>{this.state.statusMessage}</h1>
 
                             {/* to hide back the popBox */}
-                            <button onClick = {() => this.popButtonPressed()} >{this.state.buttonText}</button>
+                            {/* <button onClick = {() => this.popButtonPressed()} >{this.state.buttonText}</button>
                         </div>
-                    )
-                }
+                    ) */}
+                {/* } */}
+
+                <Modal isOpen={this.state.showPop}>
+                    <ModalHeader>{this.state.statusTitle}</ModalHeader>
+                    <ModalBody>{this.state.statusMessage}</ModalBody>
+                    <ModalFooter><Button onClick = {() => this.popButtonPressed()}>{this.state.buttonText}</Button>
+                    </ModalFooter>
+                </Modal>
 
 
                 <h1>Register Here</h1>
@@ -136,7 +161,60 @@ class Register extends React.Component{
                 <div className = "card">
                     {/* //input form */}
 
-                    <label>Name:</label>
+
+                    <FormGroup>
+                        <Label for="exampleText">Name</Label>
+                        <Input type="text"
+                        name="text"
+                        id="exampleText"
+                        title="Name must be more than 4 chars"
+                        pattern=".{4,}" 
+                        placeholder="Username" onChange={(name)=> this.setState({name:name.target.value })}
+                        />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label for="exampleEmail">Email</Label>
+                        <Input 
+                        type="email" 
+                        name="email" 
+                        id="exampleEmail" 
+                        title="Email in user@domain.com format" 
+                        placeholder="something@domain.com" 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                        onChange={(email)=> this.setState({email:email.target.value})}
+                        />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label for="examplePassword">Password</Label>
+                        <Input 
+                        type="password" 
+                        name="password" 
+                        id="examplePassword" 
+                        placeholder="Password"
+                        title="Password must be more than 6 chars"
+                        pattern=".{6,}" 
+                        placeholder="Password" 
+                        onChange={(password)=> this.setState({password:password.target.value })}
+                        />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label for="examplePassword">Password</Label>
+                        <Input 
+                        type="password" 
+                        name="password" 
+                        id="examplePassword"
+                        placeholder="Password Confirmation"
+                        title="Password must be same as above"
+                        pattern=".{6,}" 
+                        placeholder="Confirm Password" 
+                        onChange={(password_confirmation)=> this.setState({password_confirmation:password_confirmation.target.value})}
+                        />
+                    </FormGroup>
+
+                    {/* <label>Name:</label>
                     <br/>
                     <input type="text"
                     title="Name must be more than 4 chars"
@@ -155,9 +233,9 @@ class Register extends React.Component{
                     onChange={(email)=> this.setState({
                         email:email.target.value
                     })}
-                    />
+                    /> */}
         
-                    <label>Password:</label>
+                    {/* <label>Password:</label>
                     <br/>
                     <input type="text" 
                     title="Password must be more than 6 chars"
@@ -166,8 +244,8 @@ class Register extends React.Component{
                     onChange={(password)=> this.setState({
                         password:password.target.value
                     })}
-                    />
-                    <label>Retype Password:</label>
+                    /> */}
+                    {/* <label>Retype Password:</label>
                     <br/>
                     <input type="password" 
                     title="Password must be same as above"
@@ -176,7 +254,7 @@ class Register extends React.Component{
                     onChange={(password_confirmation)=> this.setState({
                         password_confirmation:password_confirmation.target.value
                     })}
-                    />
+                    /> */}
         
                     <button onClick={()=> this.onSubmitPressed()}>Register</button>
 

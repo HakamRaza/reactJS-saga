@@ -7,7 +7,8 @@ import {Link} from 'react-router-dom';
 import { getRegisterData } from "../../actions/auth/register";
 
 // using strap react
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 
 
 class Login extends Component {
@@ -75,6 +76,41 @@ class Login extends Component {
 
         <div className = "card">
 
+          <Row >
+            <Col>
+              <FormGroup>
+                <Label for="exampleEmail">Email</Label>
+                <Input 
+                  type="email" 
+                  name="email" 
+                  id="exampleEmail" 
+                  placeholder="Email"
+                  title = "Email in something@domain.com format"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                  onChange={email => {this.setState({ emailInput: email.target.value });}}
+                  />
+              </FormGroup>
+            </Col>
+
+            <Col>
+              <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input 
+                type="password" 
+                name="password" 
+                id="examplePassword" 
+                placeholder="Password"
+                pattern=".{6,}" 
+                title="Six or more characters"
+                onChange={password => {this.setState({ passwordInput: password.target.value });}}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+
+
+
+          {/*  
           <label>Email:</label>
           <br/>
           <input
@@ -82,7 +118,7 @@ class Login extends Component {
             placeholder="Email"
             title = "Email in something@domain.com format"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-            trigger function every time it change
+            // trigger function every time it change
             onChange={email => {
               //update at state
               this.setState({ emailInput: email.target.value });
@@ -105,7 +141,7 @@ class Login extends Component {
             onChange={password => {
               this.setState({ passwordInput: password.target.value });
             }}
-          /><br/>
+          /><br/> */}
 
           {/* <button onClick={this.onSubmitPressed}>Login</button> */}
           {/* same as */}
